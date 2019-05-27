@@ -1,6 +1,5 @@
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.BLL\bin\Debug\WJQ.OA.BLL.dll
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.BLL\bin\Debug\WJQ.OA.BLL.pdb
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.BLL\obj\Debug\WJQ.OA.BLL.csprojResolveAssemblyReference.cache
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.BLL\obj\Debug\WJQ.OA.BLL.csproj.CoreCompileInputs.cache
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.BLL\obj\Debug\WJQ.OA.BLL.dll
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.BLL\obj\Debug\WJQ.OA.BLL.pdb

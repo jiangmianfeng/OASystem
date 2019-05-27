@@ -1,6 +1,5 @@
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Common\bin\Debug\WJQ.OA.Common.dll
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Common\bin\Debug\WJQ.OA.Common.pdb
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Common\obj\Debug\WJQ.OA.Common.csprojResolveAssemblyReference.cache
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Common\obj\Debug\WJQ.OA.Common.csproj.CoreCompileInputs.cache
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Common\obj\Debug\WJQ.OA.Common.dll
 C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Common\obj\Debug\WJQ.OA.Common.pdb
