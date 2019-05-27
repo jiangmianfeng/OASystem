@@ -40,7 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBase.cs" />
+    <Compile Include="IUserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WJQ.OA.Model\WJQ.OA.Model.csproj">
+      <Project>{de4ff1a4-060f-4d4f-80b6-274262a5c9ec}</Project>
+      <Name>WJQ.OA.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

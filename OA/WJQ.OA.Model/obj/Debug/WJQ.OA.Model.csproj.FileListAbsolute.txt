@@ -1,0 +1,10 @@
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\bin\Debug\WJQ.OA.Model.dll.config
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\bin\Debug\WJQ.OA.Model.dll
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\bin\Debug\WJQ.OA.Model.pdb
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\bin\Debug\EntityFramework.dll
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\bin\Debug\EntityFramework.xml
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\obj\Debug\WJQ.OA.Model.csprojResolveAssemblyReference.cache
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\obj\Debug\WJQ.OA.Model.csproj.CoreCompileInputs.cache
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\obj\Debug\WJQ.OA.Model.dll
+C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.Model\obj\Debug\WJQ.OA.Model.pdb
