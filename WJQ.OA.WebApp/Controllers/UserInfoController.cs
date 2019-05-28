@@ -18,6 +18,7 @@ namespace WJQ.OA.WebApp.Controllers
         // GET: UserInfo
         public ActionResult Index()
         {
+
             return View();
         }
         [HttpPost]
@@ -38,6 +39,25 @@ namespace WJQ.OA.WebApp.Controllers
                            SubTime=u.SubTime
                        };
             return Json(new { rows = temp, total = pageCount });
+        }
+
+        public ActionResult DeleteUserInfo()
+        {
+            string UserId = Request["strId"];
+            string[] UserIds = UserId.Split(',');
+            List<int> list = new List<int>();
+            foreach (var id in UserIds)
+            {
+                list.Add(Convert.ToInt32(id));
+            }
+            if (UserInfoService.DeleteUserListEntity(list))
+            {
+                return  Content("ok");
+            }
+            else
+            {
+                return  Content("no");
+            }
         }
     }
 }

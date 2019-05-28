@@ -9,5 +9,6 @@ namespace WJQ.OA.IBLL
 {
     public interface IUserInfoService:IBaseService<UserInfo>
     {
+        bool DeleteUserListEntity(List<int> list);
     }
 }

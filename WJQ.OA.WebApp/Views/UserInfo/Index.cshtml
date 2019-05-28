@@ -53,7 +53,6 @@
                     text: '删除',
                     iconCls: 'icon-remove',
                     handler: function () {
-
                         deleteInfo();
                     }
                 }, {
@@ -74,7 +73,32 @@
                     }
                 }],
             });
-        }       
+        }
+        function deleteInfo() {
+            var rows = $("#tt").datagrid("getSelections");
+            if (!rows || rows.length == 0) {
+                $.messager.alert("提醒", "请选择要删除的记录！", "error");
+                return;
+            }
+            $.messager.confirm("提示", "确定要删除此数据吗？", function (r) {
+                if (r) {
+                    var rowsLength = rows.length;
+                    var strId = "";
+                    for (var i = 0; i < rowsLength; i++) {
+                        strId = strId + rows[i].ID + ",";
+                    }
+                    strId = strId.substr(0, strId.length - 1);
+                    $.post("/UserInfo/DeleteUserInfo", { "strId": strId }, function (data) {
+                        if (data == "ok") {
+                            $("#tt").datagrid("reload");
+                        } else {
+                            $.messager.alert("提示", "删除记录失败！", "error");
+                        }
+                    });
+                }
+            });
+            
+        }
     </script>
 </head>
 <body>
