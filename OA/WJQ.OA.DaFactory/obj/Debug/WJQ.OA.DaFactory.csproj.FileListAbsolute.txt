@@ -1,6 +1,0 @@
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.DaFactory\bin\Debug\WJQ.OA.DaFactory.dll
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.DaFactory\bin\Debug\WJQ.OA.DaFactory.pdb
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.DaFactory\obj\Debug\WJQ.OA.DaFactory.csprojResolveAssemblyReference.cache
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.DaFactory\obj\Debug\WJQ.OA.DaFactory.csproj.CoreCompileInputs.cache
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.DaFactory\obj\Debug\WJQ.OA.DaFactory.dll
-C:\Users\jsss\Desktop\OASystem\OA\WJQ.OA.DaFactory\obj\Debug\WJQ.OA.DaFactory.pdb
