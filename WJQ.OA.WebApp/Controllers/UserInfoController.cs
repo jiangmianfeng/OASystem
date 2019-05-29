@@ -59,5 +59,36 @@ namespace WJQ.OA.WebApp.Controllers
                 return  Content("no");
             }
         }
+        [HttpPost]
+        public ActionResult AddUserInfo(UserInfo userInfo)
+        {
+            userInfo.DelFlag = 0;
+            userInfo.ModifiedOn = DateTime.Now;
+            userInfo.SubTime = DateTime.Now;
+            UserInfoService.AddEntity(userInfo);
+            return Content("ok");
+        }
+        public ActionResult ShowUserInfo()
+        {
+            int id;
+            if (!int.TryParse(Request["id"],out id))
+            {
+                return Json("no");
+            }
+            var userInfo = UserInfoService.LoadEntities(x => x.ID == id).SingleOrDefault();
+            return Json(userInfo, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult UpdateUserInfo(UserInfo userInfo)
+        {
+            userInfo.ModifiedOn = DateTime.Now;
+            if (UserInfoService.EditEntity(userInfo))
+            {
+                return Content("ok");
+            }
+            else
+            {
+                return Content("no");
+            }
+        }
     }
 }
