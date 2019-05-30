@@ -19,6 +19,14 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script type="text/javascript">
         $(function () {
+            $("#seach").click(function () {
+                var param = {
+                    userName: $("#txtUserName").val(),
+                    remark: $("#txtRemark").val(),
+                }
+                loadData(param);
+            });
+                
             loadData();
             $('#addTable').css("display", "none");
             $('#updateTable').css("display", "none");
@@ -229,6 +237,7 @@
     </script>
 </head>
 <body>
+    <div><input type="text" name="txtUserName" id="txtUserName"/><input type="text" name="txtRemark" id="txtRemark"/><input type="button" id="seach" value="搜索"/></div>
     <div>
         <table id="tt" style="width: 700px;" title="标题，可以使用代码进行初始化，也可以使用这种属性的方式" iconcls="icon-edit"></table>
     </div>

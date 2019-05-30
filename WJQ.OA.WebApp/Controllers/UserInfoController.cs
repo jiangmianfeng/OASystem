@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using WJQ.OA.BLL;
 using WJQ.OA.IBLL;
 using WJQ.OA.Model;
+using WJQ.OA.Model.UserSeach;
 using static WJQ.OA.Common.EnumType;
 
 namespace WJQ.OA.WebApp.Controllers
@@ -14,11 +15,10 @@ namespace WJQ.OA.WebApp.Controllers
     public class UserInfoController : Controller
     {
         //IUserInfoService UserInfoService = new IUserInfoService();
-        UserInfoService UserInfoService = new UserInfoService();
+        IUserInfoService UserInfoService { get; set; }// = new UserInfoService();
         // GET: UserInfo
         public ActionResult Index()
         {
-
             return View();
         }
         [HttpPost]
@@ -26,9 +26,20 @@ namespace WJQ.OA.WebApp.Controllers
         {
             int pageIndex = Request["page"]!=null?Convert.ToInt32(Request["page"]):1;
             int pageSize = Request["rows"] != null ? Convert.ToInt32(Request["rows"]) : 5;
-            int pageCount;
+            int pageCount=0;
+            string userName = Request["userName"];
+            string remark = Request["remark"];
+            UserSeach userSeach = new UserSeach() {
+                PageSize = pageSize,
+                PageIndex=pageIndex,
+                Remark=remark,
+                TotalCount=pageCount,
+                UserName=userName
+            };
+
             short IsDelete = (short)DeleteEnum.Normal;
-            var UserList = UserInfoService.LoadPageEntities<int>(pageIndex, pageSize, out pageCount, c => c.DelFlag == IsDelete, c => c.ID, true);
+            var UserList = UserInfoService.SeachUserInfo(userSeach, IsDelete);
+            //var UserList = UserInfoService.LoadPageEntities<int>(pageIndex, pageSize, out pageCount, c => c.DelFlag == IsDelete, c => c.ID, true);
             var temp = from u in UserList
                        select new
                        {
@@ -38,7 +49,7 @@ namespace WJQ.OA.WebApp.Controllers
                            Remark = u.Remark,
                            SubTime=u.SubTime
                        };
-            return Json(new { rows = temp, total = pageCount });
+            return Json(new { rows = temp, total = userSeach.TotalCount },JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteUserInfo()

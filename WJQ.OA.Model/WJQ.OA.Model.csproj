@@ -66,6 +66,8 @@
     <Compile Include="UserInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserSeach\BaseSeach.cs" />
+    <Compile Include="UserSeach\UserSeach.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model1.edmx">
