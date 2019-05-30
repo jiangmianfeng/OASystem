@@ -413,6 +413,7 @@
     <Content Include="Content\images\lgbg.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\srbg.png" />
+    <Content Include="Content\loginstyle.css" />
     <Content Include="Content\metro\accordion.css" />
     <Content Include="Content\metro\calendar.css" />
     <Content Include="Content\metro\combo.css" />
@@ -460,7 +461,6 @@
     <Content Include="Content\metro\tree.css" />
     <Content Include="Content\metro\validatebox.css" />
     <Content Include="Content\metro\window.css" />
-    <Content Include="Content\loginstyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -482,7 +482,6 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery.easyui.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

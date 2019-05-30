@@ -10,19 +10,78 @@
     <meta charset="utf-8">
     <title>后台登录</title>
     <link href="~/Content/loginstyle.css" rel="stylesheet" />
+    <link href="~/Content/default/layout.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+             
+        });
+        function changeValidate(){
+            $("#imgValidate").attr("src", $("#imgValidate").attr("src") + new Date().getMilliseconds());//.src = "/Login/ValidateLogin?d=" + new Date().getMilliseconds();//.src = "/Login/ValidateLogin?d=" + new Date().getMilliseconds();//
+        }
+        function afterLogin(data) {
+            var result = data.split(':');
+            if (result[0] == "ok") {
+                window.location.href = "/Home/Index";
+            } else {
+                $("#errorMsg").css("display", "block");
+                changeValidate();
+                $("#errorMsg").text(result[1]);
+            }
+        }
+    </script>
+    <style type="text/css">
+        .SearchKeyword3 {
+            border: 1px solid #c8c8c8;
+            width: 170px;
+            color: #999;
+            font-size: 12px;
+            line-height: 35px;
+            background: url(../../Content/images/srbg.png) no-repeat;
+            height: 35px;
+            width: 170px;
+            padding-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="main">
         <div class="mainin">
             <h1><font size="22">WJQ后台管理</font></h1>
-            <div class="mainin1">
-                <ul>
-                    <li><span>用户名：</span><input name="loginName" type="text" id="loginName" placeholder="登录名" class="SearchKeyword"/></li>
-                    <li><span>密码：</span><input type="password" name="Possword" id="Possword" placeholder="密码" class="SearchKeyword2"/></li>
-                    <li><button class="tijiao">提交</button></li>
-                </ul>
-            </div>
-            <div class="footpage"><span style="" font-family:arial;""="">Copyright ?</span>2016 <a href="#" target="_blank">WJQ</a></div>
+            @using (Ajax.BeginForm("UserInfoLogin", "Login", new { }, new AjaxOptions { HttpMethod = "post", OnSuccess = "afterLogin", LoadingElementId = "loadMsg" }, new { id = "LoginForm" }))
+            {
+                <div class="mainin1">
+                    <ul>
+                        <li>
+                            <span>用户名：</span>
+                            <input name="loginName" type="text" id="loginName" placeholder="登录名" class="SearchKeyword" />
+                        </li>
+                        <li>
+                            <span>密码：</span>
+                            <input type="password" name="loginPwd" id="Possword" placeholder="密码" class="SearchKeyword2" />
+                        </li>
+                        <li>
+                            <span>
+                                &nbsp;&nbsp;
+                                <input type="text" name="validateCode" id="validateCode" placeholder="验证码" class="SearchKeyword3" />
+                                <img src="/Login/ValidateLogin?id=1" id="imgValidate" />
+                                <a href="#" id="changeValidate" onclick="changeValidate();return false">看不清</a>
+                            </span>
+                        </li>
+                        <li><button type="submit" class="tijiao">提交</button></li>
+                    </ul>
+                </div>
+                <div class="footpage" id="loadMsg" style="display:none">
+                    
+                </div>
+                <span class="footpage" id="errorMsg" style="font-size:14px;color:red;display:none">
+
+                </span>
+            }
         </div>
     </div>
     <img src="~/Content/images/loading.gif" id="loading" style=" display:none;position:absolute;" />
