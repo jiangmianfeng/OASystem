@@ -52,6 +52,9 @@
     <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -169,10 +172,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MyExceptionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +284,7 @@
     <Content Include="Content\bootstrap\tree.css" />
     <Content Include="Content\bootstrap\validatebox.css" />
     <Content Include="Content\bootstrap\window.css" />
+    <Content Include="Content\dandelion.css" />
     <Content Include="Content\default\accordion.css" />
     <Content Include="Content\default\calendar.css" />
     <Content Include="Content\default\combo.css" />
@@ -400,6 +407,12 @@
     <Content Include="Content\icons\sum.png" />
     <Content Include="Content\icons\tip.png" />
     <Content Include="Content\icons\undo.png" />
+    <Content Include="Content\images\dl.png" />
+    <Content Include="Content\images\hj.png" />
+    <Content Include="Content\images\ht_name.png" />
+    <Content Include="Content\images\lgbg.png" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\srbg.png" />
     <Content Include="Content\metro\accordion.css" />
     <Content Include="Content\metro\calendar.css" />
     <Content Include="Content\metro\combo.css" />
@@ -447,15 +460,22 @@
     <Content Include="Content\metro\tree.css" />
     <Content Include="Content\metro\validatebox.css" />
     <Content Include="Content\metro\window.css" />
+    <Content Include="Content\loginstyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Error.html" />
+    <Content Include="Images\blueprint.png" />
+    <Content Include="Images\carbon.png" />
+    <Content Include="Images\error-hanger.png" />
+    <Content Include="Images\error-pin.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datapattern.js" />
     <Content Include="Scripts\easyui-lang-zh_CN.js" />
@@ -485,10 +505,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\UserInfo\Index.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
