@@ -1,0 +1,128 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/lib/homestyle.css" rel="stylesheet" />
+    <link href="~/Content/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" />
+    <link href="~/Content/lib/ligerUI/skins/ligerui-icons.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/Ligerui/ligerui-1.2.2.min.js"></script>
+    <style type="text/css">
+        .txt {
+            font-size: 25px;
+            color:cadetblue;
+            font-weight: bold;
+            float: left;
+            margin-top: 15px;
+            margin-left: 50px;
+        }
+        .img {
+            float: left;
+            margin-top:4px;
+            margin-left:30px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#layout1").ligerLayout({
+                minLeftWidth: 80,
+                minRightWidth: 80,
+                allowTopResize: false,
+                topHeight :90
+            });
+            var LINKWIDTH = 90, LINKHEIGHT = 90, TASKBARHEIGHT = 43;
+            var winlinksul = $("#winlinks ul");
+            var links = [
+                { icon: '/Content/lib/images/3DSMAX.png', title: '填写周报', url: '../case/week.htm' },
+                { icon: '/Content/lib/images/3DSMAX.png', title: '用户列表', url: '/UserInfo/Index ' },
+                { icon: '/Content/lib/images/3DSMAX.png', title: '多表头', url: '../grid/mulheader/grid2.htm' },
+                { icon: '/Content/lib/images/Program Files Folder.png', title: '固定列', url: '../grid/frozen/frozengrid.htm' },
+                { icon: '/Content/lib/images/Program Files Folder.png', title: '可拖动', url: '../base/drag.htm' },
+                { icon: '/Content/lib/images/Alien Folder.png', title: '树', url: '../tree/draggable.htm' },
+                { icon: '/Content/lib/images/Xp-G5 006.png', title: '下拉框', url: '../comboBox/comboBoxGrid.htm' },
+                { icon: '/Content/lib/images/Xp-G5 006.png', title: '下拉框', url: '../comboBox/comboBoxGrid.htm' },
+                { icon: '/Content/lib/images/Alien Folder.png', title: 'layout', url: '../layout/layoutFullHeight.htm' },
+                { icon: '/Content/lib/images/Alien Folder.png', title: 'menu', url: '../menu/menubar.htm' },
+                { icon: '/Content/lib/images/Xp-G5 006.png', title: 'tab', url: '../tab/tabHtml.htm' },
+                { icon: '/Content/lib/images/3DSMAX.png', title: '分组', url: '../grid/groupable/checkbox.htm' }
+            ];
+            function onResize() {
+                var linksHeight = $(window).height() - TASKBARHEIGHT-100;
+                var winlinks = $("#winlinks");
+                winlinks.height(linksHeight);
+                var colMaxNumber = parseInt(linksHeight / LINKHEIGHT);//一列最多显示几个快捷方式
+                for (var i = 0, l = links.length; i < l; i++) {
+                    var link = links[i];
+                    var jlink = $("li[linkindex=" + i + "]", winlinks);
+                    var top = (i % colMaxNumber) * LINKHEIGHT, left = parseInt(i / colMaxNumber) * LINKWIDTH;
+                    if (isNaN(top) || isNaN(left)) continue;
+                    jlink.css({ top: top, left: left });
+                }
+
+            }
+            function linksInit() {
+                for (var i = 0, l = links.length; i < l; i++) {
+                    var link = links[i];
+                    var jlink;
+                    var jlink = $("<li></li>");
+                    jlink.attr("linkindex", i);
+                    jlink.append("<img src='" + link.icon + "' />");
+                    jlink.append("<span>" + link.title + "</span>");
+                    jlink.append("<div class='bg'></div>");
+                    jlink.hover(function () {
+                        $(this).addClass("l-over");
+                    }, function () {
+                        $(this).removeClass("l-over");
+                    }).click(function () {
+                        var linkindex = $(this).attr("linkindex");
+                        var link = links[linkindex];
+                        f_open(link.url, link.title, link.icon);
+                    });
+                    jlink.appendTo(winlinksul);
+                }
+            }
+            $(window).resize(onResize);
+            $.ligerui.win.removeTaskbar = function () { }; //不允许移除
+            $.ligerui.win.createTaskbar(); //页面加载时创建任务栏
+            linksInit();
+            onResize();
+        });   
+        function f_open(url, title, icon) {
+            var win = $.ligerDialog.open(
+                {
+                    height: 500, url: url, width: 600, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
+                        {
+                            text: '确定', onclick: function (item, Dialog, index) {
+                                win.hide();
+                            }
+                        }
+                    ]
+                });
+            var task = jQuery.ligerui.win.tasks[win.id];
+            if (task) {
+                $(".l-taskbar-task-icon:first", task).html('<img src="' + icon + '" />');
+            }
+            return win;
+        }
+    </script>
+</head>
+<body>    
+    <div id="layout1">
+        <div position="center" title="标题" style="overflow: hidden; background: url(../../Images/bg.jpg) repeat-x center center;">
+            <div id="winlinks" >
+                <ul></ul>
+            </div>
+        </div>
+        <div position="top" style="background-image: url('../../Images/bg3.png');">
+            <img src="~/Images/logo.png" class="img"/>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

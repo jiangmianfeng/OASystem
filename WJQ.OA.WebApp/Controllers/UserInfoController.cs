@@ -12,7 +12,7 @@ using static WJQ.OA.Common.EnumType;
 
 namespace WJQ.OA.WebApp.Controllers
 {
-    public class UserInfoController : Controller
+    public class UserInfoController : BaseController
     {
         //IUserInfoService UserInfoService = new IUserInfoService();
         IUserInfoService UserInfoService { get; set; }// = new UserInfoService();

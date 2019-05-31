@@ -29,6 +29,8 @@
                 window.location.href = "/Home/Index";
             } else {
                 $("#errorMsg").css("display", "block");
+                $("#validateCode").val("");
+                $("#Possword").val("");
                 changeValidate();
                 $("#errorMsg").text(result[1]);
             }
@@ -45,6 +47,12 @@
             height: 35px;
             width: 170px;
             padding-left: 10px;
+        }
+        .mainin1 {
+            float: left;
+            width: 381px;
+            height: 384px;
+            background: url(../../Content/images/hj.png) repeat-y 0px 0px;
         }
     </style>
 </head>

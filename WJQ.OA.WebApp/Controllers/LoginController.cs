@@ -38,6 +38,7 @@ namespace WJQ.OA.WebApp.Controllers
 
             if (userInfo!=null)
             {
+                Session["UserInfo"] = userInfo;
                 return Content("ok:登录成功");
                 //Response.Redirect("/Home/Index");               
             }
