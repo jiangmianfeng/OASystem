@@ -8,7 +8,7 @@ using WJQ.OA.Model;
 
 namespace WJQ.OA.IDal
 {
-    public interface IUserInfoDal:IBase<UserInfo>
+    public partial interface IUserInfoDal:IBase<UserInfo>
     {
         
     }

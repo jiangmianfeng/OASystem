@@ -10,7 +10,7 @@ using WJQ.OA.Model;
 
 namespace WJQ.OA.DaFactory
 {
-    public class DBSession: IDbSession
+    public partial class DBSession: IDbSession
     {
         //OAEntities Db = new OAEntities();
         public DbContext Db
@@ -20,23 +20,23 @@ namespace WJQ.OA.DaFactory
                 return DalFactory.CreateDbContext();
             }
         }
-        public IUserInfoDal _UserInfoDal;
-        public IUserInfoDal UserInfoDal
-        {
-            get
-            {
-                if (_UserInfoDal==null)
-                {
-                    //_UserInfoDal = new UserInfoDal();
-                    _UserInfoDal = AbstractFactory.CreateUserInfoDal();
-                }
-                return _UserInfoDal;
-            }
-            set
-            {
-                _UserInfoDal = value;
-            }
-        }
+        //public IUserInfoDal _UserInfoDal;
+        //public IUserInfoDal UserInfoDal
+        //{
+        //    get
+        //    {
+        //        if (_UserInfoDal==null)
+        //        {
+        //            //_UserInfoDal = new UserInfoDal();
+        //            _UserInfoDal = AbstractFactory.CreateUserInfoDal();
+        //        }
+        //        return _UserInfoDal;
+        //    }
+        //    set
+        //    {
+        //        _UserInfoDal = value;
+        //    }
+        //}
         public bool SaveChanges()
         {
             return Db.SaveChanges()>0;

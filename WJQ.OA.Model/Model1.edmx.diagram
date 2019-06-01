@@ -4,8 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8e2ba948942c48be9717f22c96ba8e3d" Name="Diagram1">
+      <Diagram DiagramId="8e2ba948942c48be9717f22c96ba8e3d" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="OAModel.UserInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.ActionInfo" Width="1.5" PointX="8.75" PointY="5.5" />
+        <EntityTypeShape EntityType="OAModel.Department" Width="1.5" PointX="12.25" PointY="0.5" />
+        <EntityTypeShape EntityType="OAModel.R_UserInfo_ActionInfo" Width="1.5" PointX="2.125" PointY="6.125" />
+        <EntityTypeShape EntityType="OAModel.RoleInfo" Width="1.5" PointX="5.5" PointY="2.125" />
+        <AssociationConnector Association="OAModel.FK__R_UserInf__Actio__38996AB5" />
+        <AssociationConnector Association="OAModel.FK__R_UserInf__UserI__398D8EEE" />
+        <AssociationConnector Association="OAModel.DepartmentActionInfo" />
+        <AssociationConnector Association="OAModel.RoleInfoActionInfo" />
+        <AssociationConnector Association="OAModel.UserInfoDepartment" />
+        <AssociationConnector Association="OAModel.UserInfoRoleInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

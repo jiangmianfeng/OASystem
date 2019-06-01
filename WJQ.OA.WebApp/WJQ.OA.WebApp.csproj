@@ -911,16 +911,14 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Error.html" />
+    <Content Include="Images\bg1.png" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\bg3.png" />
     <Content Include="Images\blueprint.png" />
     <Content Include="Images\carbon.png" />
     <Content Include="Images\error-hanger.png" />
     <Content Include="Images\error-pin.png" />
-    <Content Include="Images\HeadBack.jpg" />
     <Content Include="Images\logo.png" />
-    <Content Include="Images\WJQ.png" />
-    <Content Include="Images\WJQOA.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

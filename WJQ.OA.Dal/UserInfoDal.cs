@@ -10,7 +10,7 @@ using WJQ.OA.Model;
 
 namespace WJQ.OA.Dal
 {
-    public class UserInfoDal :BaseDal<UserInfo>, IUserInfoDal
+    public partial class UserInfoDal :BaseDal<UserInfo>, IUserInfoDal
     {
 
     }

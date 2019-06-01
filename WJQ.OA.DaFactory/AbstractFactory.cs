@@ -9,20 +9,20 @@ using WJQ.OA.IDal;
 
 namespace WJQ.OA.DaFactory
 {
-    public class AbstractFactory
+    public partial class AbstractFactory
     {
         private static readonly string AssemblyPath = ConfigurationManager.AppSettings["AssemblyPath"];
         private static readonly string NameSpace = ConfigurationManager.AppSettings["NameSpace"];
 
-        public static IUserInfoDal CreateUserInfoDal()
-        {
-            string fullClassName = NameSpace + ".UserInfoDal";
-            return CreateInstance(fullClassName) as IUserInfoDal;
-        }
+        //public static IUserInfoDal CreateUserInfoDal()
+        //{
+        //    string fullClassName = NameSpace + ".UserInfoDal";
+        //    return CreateInstance(fullClassName) as IUserInfoDal;
+        //}
 
         private static object CreateInstance(string className)
         {
-            var assembly= Assembly.Load(AssemblyPath);
+            var assembly = Assembly.Load(AssemblyPath);
             return assembly.CreateInstance(className);
         }
     }

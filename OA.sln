@@ -19,10 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WJQ.OA.IBLL", "WJQ.OA.IBLL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WJQ.OA.Model", "WJQ.OA.Model\WJQ.OA.Model.csproj", "{DE4FF1A4-060F-4D4F-80B6-274262A5C9EC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demotest", "demotest", "{12BB6B93-DC50-4A6B-8412-F59DC4279C81}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memcache", "Memcache\Memcache.csproj", "{BD52C403-1095-423F-996B-A11EBF8BDF77}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,16 +57,9 @@ Global
 		{DE4FF1A4-060F-4D4F-80B6-274262A5C9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE4FF1A4-060F-4D4F-80B6-274262A5C9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE4FF1A4-060F-4D4F-80B6-274262A5C9EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD52C403-1095-423F-996B-A11EBF8BDF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD52C403-1095-423F-996B-A11EBF8BDF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD52C403-1095-423F-996B-A11EBF8BDF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD52C403-1095-423F-996B-A11EBF8BDF77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{BD52C403-1095-423F-996B-A11EBF8BDF77} = {12BB6B93-DC50-4A6B-8412-F59DC4279C81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C412D1C9-7695-4CD4-B914-D84AB60834A9}

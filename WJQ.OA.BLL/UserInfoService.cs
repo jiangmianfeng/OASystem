@@ -9,7 +9,7 @@ using WJQ.OA.Model.UserSeach;
 
 namespace WJQ.OA.BLL
 {
-    public class UserInfoService : BaseService<UserInfo>,IUserInfoService
+    public partial class UserInfoService : BaseService<UserInfo>,IUserInfoService
     {
         public bool DeleteUserListEntity(List<int> list)
         {
@@ -36,9 +36,9 @@ namespace WJQ.OA.BLL
             return temp.OrderBy<UserInfo,int>(x => x.ID).Skip<UserInfo>((userSeach.PageIndex - 1) * userSeach.PageSize).Take<UserInfo>(userSeach.PageSize);
         }
 
-        public override void SetCurrentDal()
-        {
-            CurrentDal = this.CurrentDBSession.UserInfoDal;
-        }
+        //public override void SetCurrentDal()
+        //{
+        //    CurrentDal = this.CurrentDBSession.UserInfoDal;
+        //}
     }
 }

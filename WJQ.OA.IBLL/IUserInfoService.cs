@@ -8,7 +8,7 @@ using WJQ.OA.Model.UserSeach;
 
 namespace WJQ.OA.IBLL
 {
-    public interface IUserInfoService:IBaseService<UserInfo>
+    public partial interface IUserInfoService:IBaseService<UserInfo>
     {
         bool DeleteUserListEntity(List<int> list);
         IQueryable<UserInfo> SeachUserInfo(UserSeach userSeach, short delFlag);

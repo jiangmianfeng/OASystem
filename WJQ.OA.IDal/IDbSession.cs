@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WJQ.OA.IDal
 {
-    public interface IDbSession
+    public partial interface IDbSession
     {
         DbContext Db { get; }
-        IUserInfoDal UserInfoDal { get; set; }
+        //IUserInfoDal UserInfoDal { get; set; }
         bool SaveChanges();
     }
 }
