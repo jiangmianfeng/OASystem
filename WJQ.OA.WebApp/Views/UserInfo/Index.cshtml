@@ -235,10 +235,20 @@
             return date.getFullYear() + "-" + month + "-" + currentDate;
         }
     </script>
+    <style type="text/css">
+        .divstyle {
+            margin-left: 20px;
+            margin-top: 35px;
+        }
+    </style>
 </head>
-<body>
-    <div><input type="text" name="txtUserName" id="txtUserName"/><input type="text" name="txtRemark" id="txtRemark"/><input type="button" id="seach" value="搜索"/></div>
-    <div>
+<body class="divstyle" style="background:url(../../Images/bg3.png) repeat-x 0px 0px;">
+    <div class="divstyle">
+        用户名:&nbsp;&nbsp;<input class="textbox" type="text" name="txtUserName" id="txtUserName" />&nbsp;&nbsp;
+        备注:&nbsp;&nbsp;<input class="textbox" type="text" name="txtRemark" id="txtRemark" />
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" id="seach">Search</a>
+    </div>
+    <div style="margin-top:10px;">
         <table id="tt" style="width: 700px;" title="标题，可以使用代码进行初始化，也可以使用这种属性的方式" iconcls="icon-edit"></table>
     </div>
     <div id="addTable">
