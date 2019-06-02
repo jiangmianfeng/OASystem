@@ -9,6 +9,7 @@
 
 namespace WJQ.OA.Model
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -36,9 +37,11 @@ namespace WJQ.OA.Model
         public string MenuIcon { get; set; }
         public int IconWidth { get; set; }
         public int IconHeight { get; set; }
-    
+        [JsonIgnore]
         public virtual ICollection<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Department> Department { get; set; }
+        [JsonIgnore]
         public virtual ICollection<RoleInfo> RoleInfo { get; set; }
     }
 }

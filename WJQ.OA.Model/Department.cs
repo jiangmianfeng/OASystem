@@ -9,6 +9,7 @@
 
 namespace WJQ.OA.Model
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -26,8 +27,9 @@ namespace WJQ.OA.Model
         public string TreePath { get; set; }
         public int Level { get; set; }
         public bool IsLeaf { get; set; }
-    
+        [JsonIgnore]
         public virtual ICollection<ActionInfo> ActionInfo { get; set; }
+        [JsonIgnore]
         public virtual ICollection<UserInfo> UserInfo { get; set; }
     }
 }

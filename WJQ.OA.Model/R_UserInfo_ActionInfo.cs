@@ -9,6 +9,7 @@
 
 namespace WJQ.OA.Model
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -18,8 +19,9 @@ namespace WJQ.OA.Model
         public int UserInfoID { get; set; }
         public int ActionInfoID { get; set; }
         public bool IsPass { get; set; }
-    
+        [JsonIgnore]
         public virtual ActionInfo ActionInfo { get; set; }
+        [JsonIgnore]
         public virtual UserInfo UserInfo { get; set; }
     }
 }

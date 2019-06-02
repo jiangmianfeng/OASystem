@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WJQ.OA.BLL;
+using WJQ.OA.Common;
 using WJQ.OA.IBLL;
 using WJQ.OA.Model;
 
@@ -38,7 +39,10 @@ namespace WJQ.OA.WebApp.Controllers
 
             if (userInfo!=null)
             {
-                Session["UserInfo"] = userInfo;
+                //Session["UserInfo"] = userInfo;
+                string sessionId = Guid.NewGuid().ToString();
+                MemcacheHelper.Set(sessionId, SerializeHelper.SerializeToString(userInfo),DateTime.Now.AddMinutes(20));
+                Response.Cookies["sessionId"].Value = sessionId;
                 return Content("ok:登录成功");
                 //Response.Redirect("/Home/Index");               
             }
