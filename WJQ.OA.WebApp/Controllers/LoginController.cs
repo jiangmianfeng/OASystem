@@ -59,5 +59,10 @@ namespace WJQ.OA.WebApp.Controllers
             Session["ValidateImage"] = imageValidate;
             return File(be,"image/jpeg");
         }
+        public void Exit()
+        {
+            string ss = Response.Cookies["sessionId"].Value;
+            Response.Cookies["sessionId"].Expires = DateTime.Now.AddDays(-1);             
+        }
     }
 }

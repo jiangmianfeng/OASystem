@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -81,12 +82,19 @@ namespace WJQ.OA.WebApp.Controllers
         }
         public ActionResult ShowUserInfo()
         {
+            
             int id;
             if (!int.TryParse(Request["id"],out id))
             {
                 return Json("no");
             }
-            var userInfo = UserInfoService.LoadEntities(x => x.ID == id).SingleOrDefault();
+            var user = UserInfoService.LoadEntities(x => x.ID == id).SingleOrDefault();
+            JsonSerializerSettings setting = new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+
+            var userInfo = JsonConvert.SerializeObject(user, setting);
             return Json(userInfo, JsonRequestBehavior.AllowGet);
         }
         public ActionResult UpdateUserInfo(UserInfo userInfo)

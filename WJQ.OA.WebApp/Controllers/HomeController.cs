@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WJQ.OA.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController :Controller
     {
         // GET: Home
         public ActionResult Index()

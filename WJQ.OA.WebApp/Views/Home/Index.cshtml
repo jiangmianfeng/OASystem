@@ -24,8 +24,6 @@
             float: left;
             margin-top:4px;
             margin-left:30px;
-            height:70px;
-            width:250px;
         }
     </style>
     <script type="text/javascript">
@@ -39,18 +37,18 @@
             var LINKWIDTH = 90, LINKHEIGHT = 90, TASKBARHEIGHT = 43;
             var winlinksul = $("#winlinks ul");
             var links = [
-                { icon: '/Content/lib/images/txl.png', title: '角色列表', url: '../case/week.htm' },
-                { icon: '/Content/lib/images/yg.png', title: '用户列表', url: '/UserInfo/Index ' },
-                { icon: '/Content/lib/images/qx.png', title: '权限列表', url: '../grid/mulheader/grid2.htm' },
-                { icon: '/Content/lib/images/kg.png', title: '固定列', url: '../grid/frozen/frozengrid.htm' },
+                { icon: '/Content/lib/images/juese.png', title: '角色管理', url: '../case/week.htm' },
+                { icon: '/Content/lib/images/jingli.png', title: '用户列表', url: '/UserInfo/Index ' },
+                { icon: '/Content/lib/images/quanxian.png', title: '权限管理', url: '../grid/mulheader/grid2.htm' },
+                { icon: '/Content/lib/images/Program Files Folder.png', title: '固定列', url: '../grid/frozen/frozengrid.htm' },
                 { icon: '/Content/lib/images/Program Files Folder.png', title: '可拖动', url: '../base/drag.htm' },
                 { icon: '/Content/lib/images/Alien Folder.png', title: '树', url: '../tree/draggable.htm' },
-                { icon: '/Content/lib/images/rj.png', title: '下拉框', url: '../comboBox/comboBoxGrid.htm' },
                 { icon: '/Content/lib/images/Xp-G5 006.png', title: '下拉框', url: '../comboBox/comboBoxGrid.htm' },
-                { icon: '/Content/lib/images/wj.png', title: 'layout', url: '../layout/layoutFullHeight.htm' },
-                { icon: '/Content/lib/images/wj.png', title: 'menu', url: '../menu/menubar.htm' },
+                { icon: '/Content/lib/images/Xp-G5 006.png', title: '下拉框', url: '../comboBox/comboBoxGrid.htm' },
+                { icon: '/Content/lib/images/Alien Folder.png', title: 'layout', url: '../layout/layoutFullHeight.htm' },
+                { icon: '/Content/lib/images/Alien Folder.png', title: 'menu', url: '../menu/menubar.htm' },
                 { icon: '/Content/lib/images/Xp-G5 006.png', title: 'tab', url: '../tab/tabHtml.htm' },
-                { icon: '/Content/lib/images/3DSMAX.png', title: '分组', url: '../grid/groupable/checkbox.htm' }
+                { icon: '/Content/lib/images/exit.png', title: '退出', url: '/Login/Index' }
             ];
             function onResize() {
                 var linksHeight = $(window).height() - TASKBARHEIGHT-100;
@@ -95,13 +93,14 @@
         });   
 
         function f_open(url, title, icon) {
+            if (url == "/Login/Index") {
+                window.location.href = "/Login/Index";
+            }
             var win = $.ligerDialog.open(
                 {
-                    height: 580, url: url, width: 780, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false,
-                    buttons: [
+                    height: 600, url: url, width: 780, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
                         {
-                            text: '确定',
-                            onclick: function (item, Dialog, index) {
+                            text: '确定', onclick: function (item, Dialog, index) {
                                 win.hide();
                             }
                         }
