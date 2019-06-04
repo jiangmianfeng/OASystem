@@ -41,8 +41,8 @@ namespace WJQ.OA.WebApp.Controllers
             {
                 //Session["UserInfo"] = userInfo;
                 string sessionId = Guid.NewGuid().ToString();
-                MemcacheHelper.Set(sessionId, SerializeHelper.SerializeToString(userInfo),DateTime.Now.AddMinutes(20));
-                Response.Cookies["sessionId"].Value = sessionId;
+                //MemcacheHelper.Set(sessionId, SerializeHelper.SerializeToString(userInfo),DateTime.Now.AddMinutes(20));
+                //Response.Cookies["sessionId"].Value = sessionId;
                 return Content("ok:登录成功");
                 //Response.Redirect("/Home/Index");               
             }
