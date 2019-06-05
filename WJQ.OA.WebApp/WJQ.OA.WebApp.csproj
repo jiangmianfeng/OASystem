@@ -1006,6 +1006,7 @@
     <Content Include="Views\RoleInfo\ShowAddInfo.cshtml" />
     <Content Include="Views\UserInfo\ShowUserRoleInfo.cshtml" />
     <Content Include="Views\ActionInfo\Index.cshtml" />
+    <Content Include="Views\RoleInfo\ShowRoleAction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

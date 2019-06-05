@@ -20,6 +20,7 @@
     <script type="text/javascript">
         $(function () {
             $('#addDiv').css("display", "none");
+            $("#setActionDiv").css("display", "none");
             loadData();
         });       
             
@@ -73,7 +74,49 @@
                     handler: function () {
                         showUpdateInfo();
                     }
+                }, {
+                    id: 'btnSetAction',
+                    text: '为角色分配权限',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        showRoleAction();
+                    }
                 }],
+            });
+        }
+        function showRoleAction() {
+            //判断是否选择了一个角色.
+            var rows = $('#tt').datagrid('getSelections');//获取所选择的行
+            if (rows.length != 1) {
+                $.messager.alert("提示", "请选择要分配权限的角色", "error");
+                return;
+            }
+            //指定iframe的src.
+            $("#setActionFrame").attr("src", "/RoleInfo/ShowRoleAction/?id=" + rows[0].ID);
+            $("#setActionDiv").css("display", "block");
+            $('#setActionDiv').dialog({
+                title: '为角色分配权限数据',
+                width: 300,
+                height: 400,
+                collapsible: true,
+                maximizable: true,
+                resizable: true,
+                modal: true,
+                buttons: [{
+                    text: 'Ok',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        //提交表单
+                        //调用子窗口的方法.
+                        var childWindow = $("#setActionFrame")[0].contentWindow;//表示获取了嵌入在iframe中的子窗体的window对象。
+                        childWindow.subForm();//调用子窗体中的方法，完成表单的提交。
+                    }
+                }, {
+                    text: 'Cancel',
+                    handler: function () {
+                        $('#setActionDiv').dialog('close');
+                    }
+                }]
             });
         }
         function addInfo() {
@@ -112,6 +155,13 @@
                 $.messager.alert("提示", "添加记录失败！", "error");
             }
         }
+        //为角色分配完成权限后调用该方法
+        function afterSet(data) {
+            if (data == "ok") {
+                $('#setActionDiv').dialog('close');
+                $.messager.alert("提示", "添加权限成功！", "info");
+            }
+        }
     </script>
 </head>
 <body>
@@ -120,9 +170,10 @@
             <table id="tt" style="width: 700px;" title="标题，可以使用代码进行初始化，也可以使用这种属性的方式" iconcls="icon-edit"></table>
         </div>
         <div id="addDiv">
-            <iframe id="addFrame" width="100%" height="100%" frameborder="0">
-
-            </iframe>
+            <iframe id="addFrame" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+        <div id="setActionDiv">
+            <iframe id="setActionFrame" width="100%" height="100%" frameborder="0"></iframe>
         </div>
     </div>
 </body>

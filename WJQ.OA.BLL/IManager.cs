@@ -47,7 +47,7 @@ namespace WJQ.OA.BLL
 		 public override void SetCurrentDal()
         {
             CurrentDal = this.CurrentDBSession.RoleInfoDal;
-        }
+        }        
     }   
 	
 	public partial class UserInfoService :BaseService<UserInfo>,IUserInfoService

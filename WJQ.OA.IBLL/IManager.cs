@@ -24,14 +24,14 @@ namespace WJQ.OA.IBLL
 	public partial interface IR_UserInfo_ActionInfoService : IBaseService<R_UserInfo_ActionInfo>
     {
        
-    }   
-	
-	public partial interface IRoleInfoService : IBaseService<RoleInfo>
+    }
+
+    public partial interface IRoleInfoService : IBaseService<RoleInfo>
     {
-       
-    }   
-	
-	public partial interface IUserInfoService : IBaseService<UserInfo>
+        
+    }
+
+    public partial interface IUserInfoService : IBaseService<UserInfo>
     {
        
     }   
