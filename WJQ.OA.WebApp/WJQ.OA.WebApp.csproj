@@ -59,6 +59,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Core, Version=2.0.1.45000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <HintPath>..\packages\Spring.Core.2.0.1\lib\net45\Spring.Core.dll</HintPath>
     </Reference>
@@ -143,9 +146,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ApplicationInsights">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
@@ -424,15 +424,21 @@
     <Content Include="Content\lib\images\bg.png" />
     <Content Include="Content\lib\images\bg3.png" />
     <Content Include="Content\lib\images\blue_glow.jpg" />
+    <Content Include="Content\lib\images\exit.png" />
+    <Content Include="Content\lib\images\icon-quanxian.png" />
+    <Content Include="Content\lib\images\icon_yuangongguanli.png" />
     <Content Include="Content\lib\images\images\loading.gif" />
     <Content Include="Content\lib\images\images\top.jpg" />
     <Content Include="Content\lib\images\images\topicon.gif" />
     <Content Include="Content\lib\images\loading.gif" />
     <Content Include="Content\lib\images\logo.gif" />
     <Content Include="Content\lib\images\Program Files Folder.png" />
+    <Content Include="Content\lib\images\quanxianguanli.png" />
+    <Content Include="Content\lib\images\role-group.png" />
     <Content Include="Content\lib\images\top.jpg" />
     <Content Include="Content\lib\images\topicon.gif" />
     <Content Include="Content\lib\images\Xp-G5 006.png" />
+    <Content Include="Content\lib\images\yuangong.png" />
     <Content Include="Content\lib\jquery-validation\jquery.metadata.js" />
     <Content Include="Content\lib\jquery-validation\jquery.validate.min.js" />
     <Content Include="Content\lib\jquery-validation\messages_cn.js" />
@@ -918,6 +924,7 @@
     <Content Include="Images\carbon.png" />
     <Content Include="Images\error-hanger.png" />
     <Content Include="Images\error-pin.png" />
+    <Content Include="Images\exit.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -974,7 +981,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1015,7 +1024,7 @@
       <Name>WJQ.OA.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\WJQ.OA.Common\WJQ.OA.Common.csproj">
-      <Project>{D1E7BCCC-9D8C-4F61-9C0E-140FD0054523}</Project>
+      <Project>{1B6ED419-977A-449F-A3E5-BBE488014C90}</Project>
       <Name>WJQ.OA.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\WJQ.OA.IBLL\WJQ.OA.IBLL.csproj">
