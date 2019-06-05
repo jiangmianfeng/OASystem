@@ -12,5 +12,6 @@ namespace WJQ.OA.IBLL
     {
         bool DeleteUserListEntity(List<int> list);
         IQueryable<UserInfo> SeachUserInfo(UserSeach userSeach, short delFlag);
+        bool SetUserRoleInfo(int userId, List<int> roleIdList);
     }
 }

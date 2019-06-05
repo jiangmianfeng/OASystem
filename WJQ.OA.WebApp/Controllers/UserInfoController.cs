@@ -17,6 +17,8 @@ namespace WJQ.OA.WebApp.Controllers
     {
         //IUserInfoService UserInfoService = new IUserInfoService();
         IUserInfoService UserInfoService { get; set; }// = new UserInfoService();
+        IRoleInfoService RoleInfoService { get; set; }
+        IActionInfoService ActionInfoService { get; set; }
         // GET: UserInfo
         public ActionResult Index()
         {
@@ -108,6 +110,57 @@ namespace WJQ.OA.WebApp.Controllers
             {
                 return Content("no");
             }
+        }
+        public ActionResult ShowUserRoleInfo()
+        {
+            int id = int.Parse(Request["id"]);
+            var userInfo = UserInfoService.LoadEntities(u => u.ID == id).FirstOrDefault();
+            ViewBag.UserInfo = userInfo;
+            short delFlag =(short)DeleteEnum.Normal;
+            var allRoleList = RoleInfoService.LoadEntities(u => u.DelFlag == delFlag).ToList();
+            //查询一下要分配角色的用户以前具有了哪些角色编号
+            var allUserRoleIdList = (from x in userInfo.RoleInfo
+                                     select x.ID).ToList();
+            ViewBag.AllRoleList = allRoleList;
+            ViewBag.AllUserRoleIdList = allUserRoleIdList;
+            return View();
+        }
+        public ActionResult SetUserRoleInfo()
+        {
+            int userId = int.Parse(Request["userId"]);
+            string[] allKeys = Request.Form.AllKeys;//获取所有表单元素name属性值。
+            List<int> roleIdList = new List<int>();
+            foreach (var key in allKeys)
+            {
+                if (key.StartsWith("cba_"))
+                {
+                    string s = key.Replace("cba_", "");
+                    roleIdList.Add(Convert.ToInt32(s));
+                }
+            }
+            if (UserInfoService.SetUserRoleInfo(userId,roleIdList))
+            {
+                return Content("ok");
+            }
+            else
+            {
+                return Content("no");
+            }
+        }
+        public ActionResult ShowUserAction()
+        {
+            int userId = int.Parse(Request["userId"]);
+            var userInfo = UserInfoService.LoadEntities(u => u.ID == userId).FirstOrDefault();
+            ViewBag.UserInfo = userInfo;
+            //获取所有的权限。
+            short delFlag = (short)DeleteEnum.Normal;
+            var allActionList = ActionInfoService.LoadEntities(a => a.DelFlag == delFlag).ToList();
+            //获取要分配的用户已经有的权限。
+            var allActionIdList = (from a in userInfo.R_UserInfo_ActionInfo
+                                   select a).ToList();
+            ViewBag.AllActionList = allActionList;
+            ViewBag.AllActionIdList = allActionIdList;
+            return View();
         }
     }
 }

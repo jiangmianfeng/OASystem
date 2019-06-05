@@ -30,6 +30,8 @@
             loadData();
             $('#addTable').css("display", "none");
             $('#updateTable').css("display", "none");
+            $("#setUsrRoleDiv").css("display", "none");
+            $("#setActionDiv").css("display", "none");            
         });
         function afterUpdate(data) {
             if (data=="ok") {
@@ -90,9 +92,92 @@
                     handler: function () {
                         showUpdateInfo();
                     }
+                }, {
+                    id: 'btnSetRole',
+                    text: '为用户分配角色',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        showSetRole();
+                    }
+                },{
+                    id: 'btnSetUserAction',
+                    text: '为用户分配权限',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        showSetAction();
+                    }
                 }],
             });
         }
+        function showSetAction() {
+            //判断一下用户是否选择了要修改的数据
+            var rows = $('#tt').datagrid('getSelections');//获取所选择的行
+            if (rows.length != 1) {
+                $.messager.alert("提示", "请选择要分配权限的用户", "error");
+                return;
+            }
+            $("#setActionFrame").attr("src", "/UserInfo/ShowUserAction/?userId=" + rows[0].ID);
+            $("#setActionDiv").css("display", "block");
+            $('#setActionDiv').dialog({
+                title: '为用户分配权限数据',
+                width: 400,
+                height: 300,
+                collapsible: true,
+                maximizable: true,
+                resizable: true,
+                modal: true,
+                buttons: [{
+                    text: 'Ok',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+
+                    }
+                }, {
+                    text: 'Cancel',
+                    handler: function () {
+                        $('#setActionDiv').dialog('close');
+                    }
+                }]
+            });
+        }
+        function afterSetUserRole(data) {
+            if (data == "ok") {
+                $('#setUsrRoleDiv').dialog('close');
+                $.messager.alert("提示", "分配角色成功！", "error");
+            }
+        }
+        function showSetRole() {
+            //判断一下用户是否选择了要修改的数据
+            var rows = $('#tt').datagrid('getSelections');//获取所选择的行
+            if (rows.length != 1) {
+                $.messager.alert("提示", "请选择要分配角色的用户", "error");
+                return;
+            }
+            $("#setUserRoleFrame").attr("src", "/UserInfo/ShowUserRoleInfo/?id=" + rows[0].ID);
+            $("#setUsrRoleDiv").css("display", "block");
+            $('#setUsrRoleDiv').dialog({
+                title: '为用户分配角色数据',
+                width: 300,
+                height: 200,
+                collapsible: true,
+                maximizable: true,
+                resizable: true,
+                modal: true,
+                buttons: [{
+                    text: 'Ok',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        var childWindow = $("#setUserRoleFrame")[0].contentWindow;
+                        childWindow.subForm();
+                    }
+                }, {
+                    text: 'Cancel',
+                    handler: function () {
+                        $('#setUsrRoleDiv').dialog('close');
+                    }
+                }]
+            });
+        }       
         function showUpdateInfo() {            
             var rows = $("#tt").datagrid("getSelections");
             if (rows.length != 1) {
@@ -267,16 +352,24 @@
     <div id="updateTable">
         @using (Ajax.BeginForm("UpdateUserInfo", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterUpdate" }, new { id = "updateForm" }))
         {
-            <input type="text" name="ID" id="txtID"/>
-            <input type="text" name="DelFlag" id="txtDelFlag"/>
-            <input type="text" name="SubTime" id="txtSubTime"/>
+            <input type="text" name="ID" id="txtID" />
+            <input type="text" name="DelFlag" id="txtDelFlag" />
+            <input type="text" name="SubTime" id="txtSubTime" />
             <table>
-                <tr><td>用户名：</td><td><input type="text" name="UName" id="txtUName"/></td></tr>
-                <tr><td>密码：</td><td><input type="password" name="UPwd" id="txtUPwd"/></td></tr>
-                <tr><td>标记：</td><td><input type="text" name="Remark" id="txtURemark"/></td></tr>
-                <tr><td>排序：</td><td><input type="text" name="Sort" id="txtSort"/></td></tr>
+                <tr><td>用户名：</td><td><input type="text" name="UName" id="txtUName" /></td></tr>
+                <tr><td>密码：</td><td><input type="password" name="UPwd" id="txtUPwd" /></td></tr>
+                <tr><td>标记：</td><td><input type="text" name="Remark" id="txtURemark" /></td></tr>
+                <tr><td>排序：</td><td><input type="text" name="Sort" id="txtSort" /></td></tr>
             </table>
         }
+    </div>
+    <!-------------------为用户分配角色---------------------->
+    <div id="setUsrRoleDiv">
+        <iframe id="setUserRoleFrame" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+    <!--------------为用户分配权限------------------->
+    <div id="setActionDiv">
+        <iframe id="setActionFrame" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 </body>
 </html>

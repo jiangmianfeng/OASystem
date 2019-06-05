@@ -9,7 +9,7 @@ using static WJQ.OA.Common.EnumType;
 
 namespace WJQ.OA.WebApp.Controllers
 {
-    public class RoleInfoController : Controller
+    public class RoleInfoController : BaseController
     {
         private RoleInfoService RoleInfoService { get; set; }
         // GET: RoleInfo

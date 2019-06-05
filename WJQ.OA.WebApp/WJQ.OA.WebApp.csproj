@@ -172,6 +172,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActionInfoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -980,6 +981,7 @@
     <Content Include="Scripts\Ligerui\plugins\ligerTree.js" />
     <Content Include="Scripts\Ligerui\plugins\ligerWindow.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MyAjaxForm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config">
@@ -1002,6 +1004,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\RoleInfo\Index.cshtml" />
     <Content Include="Views\RoleInfo\ShowAddInfo.cshtml" />
+    <Content Include="Views\UserInfo\ShowUserRoleInfo.cshtml" />
+    <Content Include="Views\ActionInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

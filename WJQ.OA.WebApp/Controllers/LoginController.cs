@@ -41,8 +41,8 @@ namespace WJQ.OA.WebApp.Controllers
             {
                 //Session["UserInfo"] = userInfo;
                 string sessionId = Guid.NewGuid().ToString();
-                //MemcacheHelper.Set(sessionId, SerializeHelper.SerializeToString(userInfo),DateTime.Now.AddMinutes(20));
-                //Response.Cookies["sessionId"].Value = sessionId;
+                MemcacheHelper.Set(sessionId, SerializeHelper.SerializeToString(userInfo),DateTime.Now.AddMinutes(20));
+                Response.Cookies["sessionId"].Value = sessionId;
                 return Content("ok:登录成功");
                 //Response.Redirect("/Home/Index");               
             }
@@ -61,8 +61,12 @@ namespace WJQ.OA.WebApp.Controllers
         }
         public void Exit()
         {
-            string ss = Response.Cookies["sessionId"].Value;
-            Response.Cookies["sessionId"].Expires = DateTime.Now.AddDays(-1);             
+            string sessionId = Response.Cookies["sessionId"].Value == null ? String.Empty : Response.Cookies["sessionId"].Value;
+            if (sessionId!=null)
+            {
+                MemcacheHelper.Delete(sessionId);
+            }                      
+            Response.Cookies["sessionId"].Expires = DateTime.Now.AddDays(-1);
         }
     }
 }

@@ -36,6 +36,22 @@ namespace WJQ.OA.BLL
             return temp.OrderBy<UserInfo,int>(x => x.ID).Skip<UserInfo>((userSeach.PageIndex - 1) * userSeach.PageSize).Take<UserInfo>(userSeach.PageSize);
         }
 
+        public bool SetUserRoleInfo(int userId, List<int> roleIdList)
+        {
+            var userInfo = this.CurrentDBSession.UserInfoDal.LoadEntities(x => x.ID == userId).FirstOrDefault();
+            if (userInfo!=null)
+            {
+                userInfo.RoleInfo.Clear();
+                foreach(int roleId in roleIdList)
+                {
+                    var roleInfo = this.CurrentDBSession.RoleInfoDal.LoadEntities(x => x.ID == roleId).FirstOrDefault();
+                    userInfo.RoleInfo.Add(roleInfo);
+                }
+                return this.CurrentDBSession.SaveChanges();
+            }
+            return false;
+        }
+
         //public override void SetCurrentDal()
         //{
         //    CurrentDal = this.CurrentDBSession.UserInfoDal;
