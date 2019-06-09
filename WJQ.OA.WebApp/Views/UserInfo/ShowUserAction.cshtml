@@ -1,0 +1,143 @@
+﻿
+@{
+    Layout = null;
+}
+@using WJQ.OA.Model
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowUserAction</title>
+    <link href="~/Content/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/tableStyle.css" rel="stylesheet" />
+    <link href="~/Content/icon.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/datapattern.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    
+</head>
+<body>
+    <div>
+        为用户
+        @{
+            UserInfo user = ViewBag.UserInfo;
+            <span style="font-size:14px;color:red;font-weight:bold">@user.UName</span>
+          }分配权限
+        <hr />
+        <br />
+        <table>
+            <tr>
+                <th>编号</th>
+                <th>权限名称</th>
+                <th>Url</th>
+                <th>HttpMethod</th>
+                <th>备注</th>
+                <th>操作</th>
+                <th>操作</th>
+            </tr>
+            @{ 
+                List<ActionInfo> allActionList = ViewBag.AllActionList;
+                List<R_UserInfo_ActionInfo> allActionId = ViewBag.AllActionIdList;
+                foreach (ActionInfo action in allActionList)
+                {
+                    var actionName = "cba_" + action.ID;
+                    var noactionName = "nocba_" + action.ID;
+                    <tr>
+                        <td>@action.ID</td>
+                        <td>@action.ActionInfoName</td>
+                        <td>@action.Url</td>
+                        <td>@action.HttpMethod</td>
+                        <td>@action.Remark</td>
+                        <td>
+                       @{
+                            var isExit = (from x in allActionId
+                                          where x.ActionInfoID == action.ID
+                                          select x).FirstOrDefault();
+                            if (isExit != null)
+                            {
+                                if (isExit.IsPass)
+                                {
+                                     <label for="@actionName">允许</label>
+                                     <input type="radio" checked="checked" value="true" class="selectActions" ids="@action.ID" id="@actionName" name="@actionName" />
+                                     <label for="@noactionName">禁止</label>
+                                     <input type="radio" value="false" class="selectActions" ids="@action.ID" id="@actionName" name="@actionName" />
+                                }
+                                else
+                                {
+                                    <label for="@actionName">允许</label>
+                                    <input type="radio"  value="true" class="selectActions" ids="@action.ID" id="@actionName" name="@actionName" />
+                                    <label for="@noactionName">禁止</label>
+                                    <input type="radio"  checked="checked" value="false" class="selectActions" ids="@action.ID" id="@actionName" name="@actionName" />
+                                }
+                                }
+                                else
+                                {
+                                    <label for="@actionName">允许</label>
+                                    <input type="radio"  value="true" class="selectActions" ids="@action.ID" id="@actionName" name="@actionName" />
+                                    <label for="@noactionName">禁止</label>
+                                    <input type="radio" value="false" class="selectActions" ids="@action.ID" id="@actionName" name="@actionName" />
+                                }
+                            }
+                        </td>
+                        <td><input type="button" ids="@action.ID" class="btnClear" value="清除权限"/></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+        $(function () {
+            bindRadioEvent();
+            clearUserAction();
+    });
+    function clearUserAction() {
+        $('.btnClear').click(function () {
+            var actionId = $(this).attr("ids");
+            var control = $(this);
+            var userId =@user.ID;
+            $.post("/UserInfo/ClearUserAction", { "actionId": actionId, "userId": userId }, function (data) {
+                var serverData = data.split(':');
+                if (serverData[0] == "ok") {
+                    control.parent().parent().find(".selectActions").removeAttr("checked");
+                    showMsg(serverData[1]);
+                } else {
+                    showMsg(serverData[1]);
+                }
+            });
+        });
+    }
+    function showMsg(msg) {
+        $.messager.show({
+            title: '提示',
+            msg: msg,
+            showType: 'show'
+        });
+    }
+    //单击“单选按钮”完成权限的分配
+    function bindRadioEvent() {
+        $('.selectActions').click(function () {
+                var isPass = $(this).val();
+                var actionId = $(this).attr("ids");
+                $.post("/UserInfo/SetUserAction", { "userId":@user.ID,"actionId": actionId, "isPass": isPass }, function (data) {
+                    if (data=="ok") {
+                        $.messager.show({
+                            title: '提示',
+                            msg: '权限分配成功',
+                            showType: 'show'
+                        });
+                    } else {
+                        $.messager.show({
+                            title: '提示',
+                            msg: '权限分配失败',
+                            showType: 'show'
+                        });
+                    }
+                })
+            });
+    }
+</script>

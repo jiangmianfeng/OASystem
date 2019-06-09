@@ -52,6 +52,26 @@ namespace WJQ.OA.BLL
             return false;
         }
 
+        public bool SetUserRoleInfo(int actionId, int userId, bool isPass)
+        {
+            var userAction = this.CurrentDBSession.R_UserInfo_ActionInfoDal.LoadEntities(x => x.UserInfoID == userId&&x.ActionInfoID==actionId).FirstOrDefault();
+            if (userAction==null)
+            {
+                R_UserInfo_ActionInfo userInfo_ActionInfo = new R_UserInfo_ActionInfo();
+                userInfo_ActionInfo.IsPass = isPass;
+                userInfo_ActionInfo.UserInfoID = userId;
+                userInfo_ActionInfo.ActionInfoID = actionId;
+                this.CurrentDBSession.R_UserInfo_ActionInfoDal.AddEntity(userInfo_ActionInfo);
+            }
+            else
+            {
+                userAction.IsPass = isPass;
+                this.CurrentDBSession.R_UserInfo_ActionInfoDal.EditEntity(userAction);
+            }
+            return this.CurrentDBSession.SaveChanges();
+        }
+
+
         //public override void SetCurrentDal()
         //{
         //    CurrentDal = this.CurrentDBSession.UserInfoDal;

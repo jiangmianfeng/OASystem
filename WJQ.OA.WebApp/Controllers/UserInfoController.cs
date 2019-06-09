@@ -19,6 +19,7 @@ namespace WJQ.OA.WebApp.Controllers
         IUserInfoService UserInfoService { get; set; }// = new UserInfoService();
         IRoleInfoService RoleInfoService { get; set; }
         IActionInfoService ActionInfoService { get; set; }
+        IR_UserInfo_ActionInfoService R_UserInfo_ActionInfoService { get; set; }
         // GET: UserInfo
         public ActionResult Index()
         {
@@ -161,6 +162,41 @@ namespace WJQ.OA.WebApp.Controllers
             ViewBag.AllActionList = allActionList;
             ViewBag.AllActionIdList = allActionIdList;
             return View();
+        }
+        public ActionResult SetUserAction()
+        {
+            int actionId = Convert.ToInt32(Request["actionId"]);
+            int userId = int.Parse(Request["userId"]);
+            bool isPass = Request["isPass"] == "true" ? true : false;
+            if (UserInfoService.SetUserRoleInfo(actionId,userId,isPass))
+            {
+                return Content("ok");
+            }
+            else
+            {
+                return Content("no");
+            }
+        }
+        public ActionResult ClearUserAction()
+        {
+            int actionId = Convert.ToInt32(Request["actionId"]);
+            int userId = int.Parse(Request["userId"]);
+            var userAction = R_UserInfo_ActionInfoService.LoadEntities(x => x.ActionInfoID == actionId && x.UserInfoID == userId).FirstOrDefault();
+            if (userAction!=null)
+            {
+                if (R_UserInfo_ActionInfoService.DeleteEntity(userAction))
+                {
+                    return Content("ok:清除成功");
+                }
+                else
+                {
+                    return Content("no:清除失败");
+                }
+            }
+            else
+            {
+                return Content("no:暂无数据");
+            }
         }
     }
 }

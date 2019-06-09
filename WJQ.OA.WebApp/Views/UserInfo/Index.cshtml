@@ -46,8 +46,8 @@
             $('#tt').datagrid({
                 url: '/UserInfo/GetUserInfoList',
                 title: '用户数据表格',
-                width: 700,
-                height: 400,
+                width: 850,
+                height: 500,
                 fitColumns: true, //列自适应
                 nowrap: false,
                 idField: 'ID',//主键列的列明
@@ -120,26 +120,26 @@
             $("#setActionDiv").css("display", "block");
             $('#setActionDiv').dialog({
                 title: '为用户分配权限数据',
-                width: 400,
-                height: 300,
+                width: 820,
+                height: 600,
                 collapsible: true,
                 maximizable: true,
                 resizable: true,
                 modal: true,
                 buttons: [{
-                    text: 'Ok',
+                    text: '确定',
                     iconCls: 'icon-ok',
                     handler: function () {
-
+                        $('#setActionDiv').dialog('close');
                     }
                 }, {
-                    text: 'Cancel',
+                    text: '取消',
                     handler: function () {
                         $('#setActionDiv').dialog('close');
                     }
                 }]
             });
-        }
+        }       
         function afterSetUserRole(data) {
             if (data == "ok") {
                 $('#setUsrRoleDiv').dialog('close');
