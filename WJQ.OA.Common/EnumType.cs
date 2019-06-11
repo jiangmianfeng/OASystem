@@ -13,5 +13,10 @@ namespace WJQ.OA.Common
             Normal=0,         
             Logical
         } 
+        public enum ActionEnum
+        {
+            NormalType=0,
+            MenuType=1
+        }
     }
 }

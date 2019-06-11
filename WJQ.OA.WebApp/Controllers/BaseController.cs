@@ -10,8 +10,9 @@ namespace WJQ.OA.WebApp.Controllers
 {
     public class BaseController : Controller
     {
+        public UserInfo LoginUser { get; set; }
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
-        {
+        {           
             base.OnActionExecuted(filterContext);
             bool isSucess = false;
             if (Request.Cookies["sessionId"] != null)
@@ -22,6 +23,7 @@ namespace WJQ.OA.WebApp.Controllers
                 {
                     UserInfo userInfo = SerializeHelper.DeserializeToObject<UserInfo>(obj.ToString());
                     isSucess = true;
+                    LoginUser = userInfo;
                     MemcacheHelper.Set(sessionId, obj, DateTime.Now.AddMinutes(20));
                 }
                 if (!isSucess)
